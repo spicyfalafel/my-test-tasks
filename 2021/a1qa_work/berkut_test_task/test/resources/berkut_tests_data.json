@@ -1,0 +1,50 @@
+{
+  "test_create_subscriber": {
+    "SUMM_INCL1": 25.0,
+    "SUMM_INCL2": 50.0,
+    "CLNT_TYPE_ID": 1,
+    "BALANCE_SUMM": 100.0,
+    "EXPECTED_CLNT_STATUS": 4,
+    "EXPECTED_SERV_STAT_ID": 4
+  },
+  "test_subscriber_is_activated": {
+    "SUBS_STAT_ID": 1,
+    "SERV_STAT_ID": 1,
+    "BAL_STAT_ID": 1,
+    "BALANCE_SUMM": 25
+  },
+  "test_subscriber_activation_error": {
+    "BALANCE_SUMM": 74.99,
+    "SUBS_STAT_ID": 4,
+    "SERV_STAT_ID": 4,
+    "BAL_STAT_ID": 1,
+    "BALANCE_SUMM2": 24.99
+  },
+  "test_block_subscriber_while_activation": {
+    "BALANCE_SUMM": 75,
+    "SUBS_STAT_ID": 3,
+    "SERV_STAT_ID": 1,
+    "BAL_STAT_ID": 3,
+    "BALANCE_SUMM2": 0
+  },
+  "test_connect_service_with_insufficient_balance": {
+    "BALANCE_SUMM": 25,
+    "SUMM_INCL": 50,
+    "SERV_ACTION_ID": 1,
+    "SUBS_STAT_ID": 1,
+    "BAL_STAT_ID": 1,
+    "BALANCE_SUMM2": 25
+  },
+  "test_connect_several_new_services": {
+    "BALANCE_SUMM": 100,
+    "SUMM_INCL1": 50,
+    "SUMM_INCL2": 25,
+    "SERV_ACTION_ID1": 1,
+    "SERV_ACTION_ID2": 3,
+    "SERV_STAT_ID1": 1,
+    "SERV_STAT_ID2": 3,
+    "SUBS_STAT_ID": 1,
+    "BAL_STAT_ID": 1,
+    "BALANCE_SUMM2": 50
+  }
+}
