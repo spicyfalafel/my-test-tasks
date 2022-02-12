@@ -1,13 +1,23 @@
 (ns health-samurai.server
   (:require
    [immutant.web :as web]
+   [compojure.route :as cjr]
+   [compojure.core :as compojure]
    ))
 
-(defn app [req]
-  {:status  200
-   :headers {"Content-Type" "text/html"}
-   :body    "hello HTTP!"})
+;; GET /patient
+;; POST /patient
+;; PUT /patient/{id}
+;; DELETE /patient/{id}
 
+(compojure/defroutes routes
+  (compojure/GET "/patient" [] {:body "patients get"})
+  (compojure/POST "/patient" [] {:body "patients post"})
+  (compojure/PUT "/patient/:id" [id] {:body (str "PUT patient with id " id) })
+  (compojure/DELETE "/patient/:id" [id] {:body (str "DELETE patient with id " id )}))
+
+
+(def app routes)
 
 (defn -main [& args]
   (let [args-map (apply array-map args)
