@@ -1,6 +1,26 @@
 # health_samurai
 
-A Clojure library designed to ... well, that part is up to you.
+Test task: patients CRUD
+
+Backend: clojure 
+Frontend: clojurescript (samurai_ui directory)
+
+Tests
+CI: Jenkins (commit hook)
+Kubernetes 
+
+
+Database: PostgreSQL
+Dataset:
+- patient name
+- sex
+- birth date
+- address
+
+
+REPL development in Spacemacs using vim mode
+
+
 
 ## Usage
 
