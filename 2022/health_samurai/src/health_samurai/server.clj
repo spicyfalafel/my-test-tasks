@@ -3,41 +3,34 @@
    [immutant.web :as web]
    [compojure.route :as cjr]
    [compojure.core :as compojure]
-   [clojure.data.json :as json]
+   ;[clojure.data.json :as json]
+   [cheshire.core :refer :all]
    [ring.middleware.cors :refer [wrap-cors]]
-   ))
+   [health-samurai.database :as db]))
 
 ;; GET /patient
 ;; POST /patient
 ;; PUT /patient/{id}
 ;; DELETE /patient/{id}
 
-(def patients
-  [
-   {
-    :id 1
-    :first-name "Anton"
-    :surname "Andreev"
-    :birth-date "2000-01-01"
-    :sex "MALE"
-    :address "Pushkin street, 1/10"
-    :med-policy-id "22832213371488"
-    }
-   {
-    :id 2
-    :first-name "Andrey"
-    :surname "Bogdanov"
-    :birth-date "2000-02-02"
-    :sex "MALE"
-    :address "Pushkin street, 2/10"
-    :med-policy-id "32832213371488"
-    }
-   ])
+(defn get-patients []
+              (generate-string (db/q "*" "patient") {:pretty true}))
+
+(defn add-patient [request]
+  ;; (when-let [patient-map (-> request :params)]
+  ;;   {
+  ;;    :status 200
+  ;;    :body (db/ins-patient! patient-map)
+  ;;    })
+  )
+
+
 (compojure/defroutes routes
-  (compojure/GET "/patient" [] {:body (str patients)})
-  (compojure/POST "/patient" [] {:body "patients post"})
+  (compojure/GET "/patient" [] {:body (get-patients)})
+ ; (compojure/POST "/patient" request (add-patient request))
   (compojure/PUT "/patient/:id" [id] {:body (str "PUT patient with id " id) })
-  (compojure/DELETE "/patient/:id" [id] {:body (str "DELETE patient with id " id )}))
+  (compojure/DELETE "/patient/:id" [id] {:body (str "DELETE patient with id " id )})
+  (cjr/not-found "<h1>Page not found!!!</h1>"))
 
 
 (def app (-> routes

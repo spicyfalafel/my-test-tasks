@@ -8,8 +8,9 @@
                  [org.immutant/web          "2.1.10"]
                  [rum                       "0.12.8"]
                  [org.clojure/clojurescript "1.11.4" :scope "provided"]
-                 [org.clojure/data.json "2.4.0"]
-                 [org.clojure/java.jdbc "0.7.12"]
+                 ;[org.clojure/data.json "2.4.0"]
+                 [cheshire "5.10.2"]
+                 [com.github.seancorfield/next.jdbc "1.2.772"]
                  [org.postgresql/postgresql "42.3.3"]
                  [ring-cors "0.1.13"]]
   )
